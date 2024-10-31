@@ -13,17 +13,17 @@ import com.aziz.crud.service.CasoJudicialService;
 @RestController
 @RequestMapping("/CasosJudiciais")
 public class CasoJudicialController extends GenericController<CasoJudicial, Long> {
-	
-	private final CasoJudicialService casoJudicialService;
 
-	public CasoJudicialController(CasoJudicialService casoJudicialService) {
-		super(casoJudicialService);
-		this.casoJudicialService = casoJudicialService;
-	}
+    private final CasoJudicialService casoJudicialService;
 
-	@PutMapping("/{id}")
-	public ResponseEntity<CasoJudicial> updateCasoJudicial(@PathVariable Long id, @RequestBody CasoJudicial casoJudicialSpecs) {
-		return casoJudicialService.updateEntity(id, casoJudicialSpecs);
-	}
-	
+    public CasoJudicialController(CasoJudicialService casoJudicialService) {
+        super(casoJudicialService);
+        this.casoJudicialService = casoJudicialService;
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<CasoJudicial> updateCasoJudicial(@PathVariable Long id, @RequestBody CasoJudicial casoJudicialSpecs) {
+        return casoJudicialService.updateEntity(id, casoJudicialSpecs);
+    }
+
 }
