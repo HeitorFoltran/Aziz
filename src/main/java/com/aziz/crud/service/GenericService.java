@@ -22,11 +22,8 @@ public abstract class GenericService<T, ID> {
 
 	public ResponseEntity<T> getById(ID id) {
 		Optional<T> entity = repository.findById(id);
-		if (entity.isEmpty()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-		}
-		return ResponseEntity.ok(entity.get());
-	}
+        return entity.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+    }
 
 	public ResponseEntity<T> create(T entity) {
 		T savedEntity = repository.save(entity);
