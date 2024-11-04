@@ -1,57 +1,62 @@
 package com.aziz.crud.service;
 
 import java.util.List;
-import java.util.Optional;
 
+import com.aziz.crud.exception.EntityCreationException;
+import com.aziz.crud.exception.EntityNotFoundException;
+import com.aziz.crud.exception.EntityUpdateException;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 public abstract class GenericService<T, ID> {
 
-	protected final JpaRepository<T, ID> repository;
+    protected final JpaRepository<T, ID> repository;
 
-	public GenericService(JpaRepository<T, ID> repository) {
-		this.repository = repository;
-	}
-
-	public ResponseEntity<List<T>> getAll() {
-		List<T> entities = repository.findAll();
-		return ResponseEntity.ok(entities);
-	}
-
-	public ResponseEntity<T> getById(ID id) {
-		Optional<T> entity = repository.findById(id);
-        return entity.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+    public GenericService(JpaRepository<T, ID> repository) {
+        this.repository = repository;
     }
 
-	public ResponseEntity<T> create(T entity) {
-		T savedEntity = repository.save(entity);
-		return ResponseEntity.status(HttpStatus.CREATED).body(savedEntity);
-	}
+    public ResponseEntity<List<T>> getAll() {
+        List<T> entities = repository.findAll();
+        return ResponseEntity.ok(entities);
+    }
 
-	public ResponseEntity<Void> delete(ID id) {
-		Optional<T> entity = repository.findById(id);
-		if (entity.isEmpty()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-		}
-		repository.deleteById(id);
-		return ResponseEntity.noContent().build();
-	}
+    public ResponseEntity<T> getById(ID id) {
+        T entity = repository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Entidade com o ID " + id + " não foi encontrada"));
+        return ResponseEntity.ok(entity);
+    }
 
-	public ResponseEntity<T> updateEntity(ID id, T updatedEntity) {
-		Optional<T> entity = repository.findById(id);
-		if (entity.isEmpty()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-		}
+    public ResponseEntity<T> create(T entity) {
+        try {
+            T savedEntity = repository.save(entity);
+            return ResponseEntity.status(HttpStatus.CREATED).body(savedEntity);
+        } catch (Exception e) {
+            throw new EntityCreationException("Falha ao fazer o cadastro " + e.getMessage());
+        }
+    }
 
-		T entityToUpdate = entity.get();
-		T updated = performUpdate(entityToUpdate, updatedEntity);
+    public ResponseEntity<Void> delete(ID id) {
+        repository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Entidade com o ID " + id + " não foi encontrada"));
+        repository.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
 
-		T savedEntity = repository.save(updated);
-		return ResponseEntity.ok(savedEntity);
-	}
+    public ResponseEntity<T> updateEntity(ID id, T updatedEntity) {
+        T entity = repository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Entidade com o ID " + id + " não foi encontrada"));
 
-	protected abstract T performUpdate(T existingEntity, T updatedEntity);
+        try {
+            T updated = performUpdate(entity, updatedEntity);
+            T savedEntity = repository.save(updated);
+            return ResponseEntity.ok(savedEntity);
+        } catch (Exception e) {
+            throw new EntityUpdateException("Falha ao atulaizar entidade: " + e.getMessage());
+        }
+    }
+
+    protected abstract T performUpdate(T existingEntity, T updatedEntity);
 
 }
