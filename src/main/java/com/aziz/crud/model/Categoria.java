@@ -1,6 +1,7 @@
 package com.aziz.crud.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,5 +20,6 @@ public class Categoria {
     private Long id;
 
     @Column(nullable = false)
+    @NotEmpty
     private String descricao;
 }

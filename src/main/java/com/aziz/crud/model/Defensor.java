@@ -1,6 +1,7 @@
 package com.aziz.crud.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,10 +19,12 @@ public class Defensor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty
     @NotNull
     @Column(unique = true)
     private String cpf;
 
+    @NotEmpty
     @NotNull
     private String senha;
 

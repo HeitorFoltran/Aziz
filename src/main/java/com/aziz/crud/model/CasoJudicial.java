@@ -1,6 +1,8 @@
 package com.aziz.crud.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,6 +29,8 @@ public class CasoJudicial {
     @JoinColumn(name = "id_defensor", referencedColumnName = "id", nullable = true)
     private Defensor defensor;
 
+    @NotEmpty
+    @NotNull
     private String descricao;
 
     @ManyToOne
