@@ -19,20 +19,20 @@ public class Cliente {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-    @NotBlank
+    @NotBlank(message = "Esse campo não pode estar vazio.")
 	@Column(unique = true, nullable = false)
     private String cpf;
 
     @Column(nullable = false)
-    @NotBlank
+    @NotBlank(message = "Esse campo não pode estar vazio.")
     private String senha;
 
-    @NotBlank
+    @NotBlank(message = "Esse campo não pode estar vazio.")
     @Column(unique = true, nullable = false)
     private String rg;
 
     @Column(nullable = false)
-    @NotBlank
+    @NotBlank(message = "Esse campo não pode estar vazio.")
     private String nome;
 
     @ManyToOne

@@ -20,6 +20,6 @@ public class Categoria {
     private Long id;
 
     @Column(nullable = false)
-    @NotBlank
+    @NotBlank(message = "Esse campo não pode estar vazio.")
     private String descricao;
 }
