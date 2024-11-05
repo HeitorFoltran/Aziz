@@ -31,6 +31,7 @@ public class Cliente {
     @Column(unique = true, nullable = false)
     private String rg;
 
+    @Column(nullable = false)
     @NotBlank
     private String nome;
 
