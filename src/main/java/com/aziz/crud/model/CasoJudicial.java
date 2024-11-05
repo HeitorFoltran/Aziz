@@ -1,7 +1,7 @@
 package com.aziz.crud.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,7 +29,8 @@ public class CasoJudicial {
     @JoinColumn(name = "id_defensor", referencedColumnName = "id", nullable = true)
     private Defensor defensor;
 
-    @NotEmpty
+    @Column(nullable = false)
+    @NotBlank
     @NotNull
     private String descricao;
 
@@ -41,6 +42,7 @@ public class CasoJudicial {
     @JoinColumn(name = "id_categoria", referencedColumnName = "id")
     private Categoria categoria;
 
+    @Column(nullable = false)
     private Boolean aptidao;
 }
 

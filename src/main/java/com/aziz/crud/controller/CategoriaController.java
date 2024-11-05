@@ -1,5 +1,6 @@
 package com.aziz.crud.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -22,7 +23,7 @@ public class CategoriaController extends GenericController<Categoria, Long> {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Categoria> updateCategoria(@PathVariable Long id, @RequestBody Categoria categoriaSpecs){
+	public ResponseEntity<Categoria> updateCategoria(@Valid @PathVariable Long id, @RequestBody Categoria categoriaSpecs){
 		return categoriaService.updateEntity(id, categoriaSpecs);
 	}
 	

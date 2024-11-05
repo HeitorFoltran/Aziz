@@ -1,5 +1,6 @@
 package com.aziz.crud.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -22,7 +23,7 @@ private final DefensorService defensorService;
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Defensor> updateDefensor(@PathVariable Long id, @RequestBody Defensor defensorSpecs){
+	public ResponseEntity<Defensor> updateDefensor(@Valid @PathVariable Long id, @RequestBody Defensor defensorSpecs){
 		return defensorService.updateEntity(id, defensorSpecs);
 	}
 

@@ -1,5 +1,6 @@
 package com.aziz.crud.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -22,7 +23,7 @@ public class CasoJudicialController extends GenericController<CasoJudicial, Long
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CasoJudicial> updateCasoJudicial(@PathVariable Long id, @RequestBody CasoJudicial casoJudicialSpecs) {
+    public ResponseEntity<CasoJudicial> updateCasoJudicial(@Valid @PathVariable Long id, @RequestBody CasoJudicial casoJudicialSpecs) {
         return casoJudicialService.updateEntity(id, casoJudicialSpecs);
     }
 
