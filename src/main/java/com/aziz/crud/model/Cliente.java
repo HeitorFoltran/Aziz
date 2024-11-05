@@ -2,7 +2,6 @@ package com.aziz.crud.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,22 +20,18 @@ public class Cliente {
 	private Long id;
 
     @NotBlank
-    @NotNull
 	@Column(unique = true, nullable = false)
     private String cpf;
 
     @Column(nullable = false)
     @NotBlank
-    @NotNull
     private String senha;
 
     @NotBlank
-    @NotNull
     @Column(unique = true, nullable = false)
     private String rg;
 
     @NotBlank
-    @NotNull
     private String nome;
 
     @ManyToOne
