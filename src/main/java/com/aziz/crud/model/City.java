@@ -1,6 +1,7 @@
 package com.aziz.crud.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,18 +12,15 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "casos_encaminhados")
-public class Defensoria {
+@Table(name = "cidades")
+public class City {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "id_casojudicial", referencedColumnName = "id")
-    private CasoJudicial casoJudicial;
-
-    @ManyToOne
-    @JoinColumn(name = "id_defensor", referencedColumnName = "id")
-    private Defensor defensor;
+    @Column(nullable = false)
+    @NotBlank(message = "Esse campo não pode estar vazio.")
+    private String description;
 }
+

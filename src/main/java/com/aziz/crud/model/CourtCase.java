@@ -14,7 +14,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "casos_judiciais")
-public class CasoJudicial {
+public class CourtCase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,26 +22,26 @@ public class CasoJudicial {
 
     @ManyToOne
     @JoinColumn(name = "id_documento", referencedColumnName = "id")
-    private Documento documento;
+    private Document document;
 
     @ManyToOne
     @JoinColumn(name = "id_defensor", referencedColumnName = "id", nullable = true)
-    private Defensor defensor;
+    private Defender defender;
 
     @Column(nullable = false)
     @NotBlank(message = "Esse campo não pode estar vazio.")
-    private String descricao;
+    private String description;
 
     @ManyToOne
     @JoinColumn(name = "id_cliente", referencedColumnName = "id")
-    private Cliente cliente;
+    private Client client;
 
     @ManyToOne
     @JoinColumn(name = "id_categoria", referencedColumnName = "id")
-    private Categoria categoria;
+    private Category category;
 
     @NotBlank(message = "Insira algo")
     @Column(nullable = false)
-    private Boolean aptidao;
+    private Boolean status;
 }
 

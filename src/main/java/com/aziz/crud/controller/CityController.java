@@ -8,23 +8,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.aziz.crud.model.Cidade;
-import com.aziz.crud.service.CidadeService;
+import com.aziz.crud.model.City;
+import com.aziz.crud.service.CityService;
 
 @RestController
 @RequestMapping("/cidades")
-public class CidadeController extends GenericController<Cidade, Long>{
+public class CityController extends GenericController<City, Long>{
 	
-	private final CidadeService cidadeService;
+	private final CityService cityService;
 	
-	public CidadeController(CidadeService cidadeService) {
-		super(cidadeService);
-		this.cidadeService = cidadeService;
+	public CityController(CityService cityService) {
+		super(cityService);
+		this.cityService = cityService;
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Cidade> updateCidade(@Valid @PathVariable Long id, @RequestBody Cidade cidadeSpecs){
-		return cidadeService.updateEntity(id, cidadeSpecs);
+	public ResponseEntity<City> updateCidade(@Valid @PathVariable Long id, @RequestBody City citySpecs){
+		return cityService.updateEntity(id, citySpecs);
 	}
 
 }

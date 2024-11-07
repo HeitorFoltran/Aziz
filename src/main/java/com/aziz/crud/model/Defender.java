@@ -12,15 +12,18 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "cidades")
-public class Cidade {
-
-    @Id
+@Table(name = "defensores")
+public class Defender {
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Esse campo não pode estar vazio.")
+    @Column(unique = true, nullable = false)
+    private String cpf;
+
     @Column(nullable = false)
     @NotBlank(message = "Esse campo não pode estar vazio.")
-    private String descricao;
-}
+    private String password;
 
+}

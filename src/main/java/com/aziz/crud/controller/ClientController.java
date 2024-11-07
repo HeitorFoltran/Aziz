@@ -8,23 +8,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.aziz.crud.model.Cliente;
-import com.aziz.crud.service.ClienteService;
+import com.aziz.crud.model.Client;
+import com.aziz.crud.service.ClientService;
  
 @RestController
 @RequestMapping("/clientes")
-public class ClienteController extends GenericController<Cliente, Long> {
+public class ClientController extends GenericController<Client, Long> {
 	
-	private final ClienteService clienteService;
+	private final ClientService clientService;
 
-	public ClienteController(ClienteService clienteService) {
-		super(clienteService);
-		this.clienteService = clienteService;
+	public ClientController(ClientService clientService) {
+		super(clientService);
+		this.clientService = clientService;
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Cliente> updateCliente(@Valid @PathVariable Long id, @RequestBody Cliente clienteSpecs) {
-		return clienteService.updateEntity(id, clienteSpecs);
+	public ResponseEntity<Client> updateCliente(@Valid @PathVariable Long id, @RequestBody Client clientSpecs) {
+		return clientService.updateEntity(id, clientSpecs);
 	}
 	
 }

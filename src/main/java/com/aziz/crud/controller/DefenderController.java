@@ -8,23 +8,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.aziz.crud.model.Defensor;
-import com.aziz.crud.service.DefensorService;
+import com.aziz.crud.model.Defender;
+import com.aziz.crud.service.DefenderService;
 
 @RestController
 @RequestMapping("/defensores")
-public class DefensorController extends GenericController<Defensor, Long>{
+public class DefenderController extends GenericController<Defender, Long>{
 	
-private final DefensorService defensorService;
+private final DefenderService defenderService;
 	
-	public DefensorController(DefensorService defensorService) {
-		super(defensorService);
-		this.defensorService = defensorService;
+	public DefenderController(DefenderService defenderService) {
+		super(defenderService);
+		this.defenderService = defenderService;
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Defensor> updateDefensor(@Valid @PathVariable Long id, @RequestBody Defensor defensorSpecs){
-		return defensorService.updateEntity(id, defensorSpecs);
+	public ResponseEntity<Defender> updateDefensor(@Valid @PathVariable Long id, @RequestBody Defender defenderSpecs){
+		return defenderService.updateEntity(id, defenderSpecs);
 	}
 
 }

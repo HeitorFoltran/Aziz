@@ -13,7 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "clientes")
-public class Cliente {
+public class Client {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +25,7 @@ public class Cliente {
 
     @Column(nullable = false)
     @NotBlank(message = "Esse campo não pode estar vazio.")
-    private String senha;
+    private String password;
 
     @NotBlank(message = "Esse campo não pode estar vazio.")
     @Column(unique = true, nullable = false)
@@ -33,9 +33,9 @@ public class Cliente {
 
     @Column(nullable = false)
     @NotBlank(message = "Esse campo não pode estar vazio.")
-    private String nome;
+    private String name;
 
     @ManyToOne
     @JoinColumn(name = "id_cidade", referencedColumnName = "id")
-    private Cidade cidade;
+    private City city;
 }
