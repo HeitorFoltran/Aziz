@@ -40,6 +40,7 @@ public class CasoJudicial {
     @JoinColumn(name = "id_categoria", referencedColumnName = "id")
     private Categoria categoria;
 
+    @NotBlank(message = "Insira algo")
     @Column(nullable = false)
     private Boolean aptidao;
 }
