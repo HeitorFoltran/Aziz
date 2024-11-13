@@ -13,7 +13,7 @@ import com.aziz.crud.service.OfficeService;
 
 
 @RestController
-@RequestMapping("/defensorias")
+@RequestMapping("/offices")
 public class OfficeController extends GenericController<Office, Long>{
 
 private final OfficeService officeService;

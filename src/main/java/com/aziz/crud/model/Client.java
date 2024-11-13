@@ -2,6 +2,7 @@ package com.aziz.crud.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +22,7 @@ public class Client {
 
     @NotBlank(message = "Esse campo não pode estar vazio.")
 	@Column(unique = true, nullable = false)
+    @Pattern(regexp = "^(\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}|\\d{11})$", message = "CPF inválido")
     private String cpf;
 
     @Column(nullable = false)
@@ -29,6 +31,7 @@ public class Client {
 
     @NotBlank(message = "Esse campo não pode estar vazio.")
     @Column(unique = true, nullable = false)
+    @Pattern(regexp = "^\\d{1,2}\\.?\\d{3}\\.?\\d{3}-?\\d{1}$", message = "RG inválido")
     private String rg;
 
     @Column(nullable = false)

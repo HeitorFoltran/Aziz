@@ -12,7 +12,7 @@ import com.aziz.crud.model.Document;
 import com.aziz.crud.service.DocumentService;
 
 @RestController
-@RequestMapping("/documentos")
+@RequestMapping("/documents")
 public class DocumentController extends GenericController<Document, Long> {
 
 	private final DocumentService documentService;

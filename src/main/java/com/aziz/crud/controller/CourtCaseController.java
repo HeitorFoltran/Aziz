@@ -12,7 +12,7 @@ import com.aziz.crud.model.CourtCase;
 import com.aziz.crud.service.CourtCaseService;
 
 @RestController
-@RequestMapping("/CasosJudiciais")
+@RequestMapping("/courtCases")
 public class CourtCaseController extends GenericController<CourtCase, Long> {
 
     private final CourtCaseService courtCaseService;

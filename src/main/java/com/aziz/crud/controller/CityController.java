@@ -12,7 +12,7 @@ import com.aziz.crud.model.City;
 import com.aziz.crud.service.CityService;
 
 @RestController
-@RequestMapping("/cidades")
+@RequestMapping("/cities")
 public class CityController extends GenericController<City, Long>{
 	
 	private final CityService cityService;

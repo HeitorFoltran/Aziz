@@ -1,12 +1,12 @@
 package com.aziz.crud.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 
 @Getter
 @Setter
@@ -36,12 +36,17 @@ public class CourtCase {
     @JoinColumn(name = "id_cliente", referencedColumnName = "id")
     private Client client;
 
-    @ManyToOne
-    @JoinColumn(name = "id_categoria", referencedColumnName = "id")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "categoria", nullable = false)
     private Category category;
 
     @NotBlank(message = "Insira algo")
     @Column(nullable = false)
-    private Boolean status;
+    private Boolean status = false;
+
+    @JsonProperty("status")
+    public String getDescriptionStatus() {
+        return status.equals(true) ? "Apto" : "Não apto";
+    }
 }
 

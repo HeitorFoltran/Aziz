@@ -12,7 +12,7 @@ import com.aziz.crud.model.Client;
 import com.aziz.crud.service.ClientService;
  
 @RestController
-@RequestMapping("/clientes")
+@RequestMapping("/clients")
 public class ClientController extends GenericController<Client, Long> {
 	
 	private final ClientService clientService;

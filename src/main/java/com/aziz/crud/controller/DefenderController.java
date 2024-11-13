@@ -12,7 +12,7 @@ import com.aziz.crud.model.Defender;
 import com.aziz.crud.service.DefenderService;
 
 @RestController
-@RequestMapping("/defensores")
+@RequestMapping("/defenders")
 public class DefenderController extends GenericController<Defender, Long>{
 	
 private final DefenderService defenderService;

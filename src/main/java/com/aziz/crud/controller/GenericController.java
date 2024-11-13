@@ -22,7 +22,7 @@ public abstract class GenericController<T, ID> {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<T> getById(@Valid @PathVariable ID id) {
+	public ResponseEntity<T> getById(@PathVariable ID id) {
 		return service.getById(id);
 	}
 
@@ -32,7 +32,7 @@ public abstract class GenericController<T, ID> {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> delete(@Valid @PathVariable ID id) {
+	public ResponseEntity<Void> delete(@PathVariable ID id) {
 		return service.delete(id);
 	}
 }
