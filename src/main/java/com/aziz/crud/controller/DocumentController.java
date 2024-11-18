@@ -23,7 +23,7 @@ public class DocumentController extends GenericController<Document, Long> {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Document> updateDocumento(@Valid @PathVariable Long id, @RequestBody Document documentSpecs) {
+	public ResponseEntity<Document> updateDocument(@Valid @PathVariable Long id, @RequestBody Document documentSpecs) {
 		return documentService.updateEntity(id, documentSpecs);
 	}
 

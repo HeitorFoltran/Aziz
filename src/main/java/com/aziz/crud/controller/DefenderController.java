@@ -23,7 +23,7 @@ private final DefenderService defenderService;
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Defender> updateDefensor(@Valid @PathVariable Long id, @RequestBody Defender defenderSpecs){
+	public ResponseEntity<Defender> updateDefender(@Valid @PathVariable Long id, @RequestBody Defender defenderSpecs){
 		return defenderService.updateEntity(id, defenderSpecs);
 	}
 

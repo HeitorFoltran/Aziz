@@ -23,7 +23,7 @@ public class CityController extends GenericController<City, Long>{
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<City> updateCidade(@Valid @PathVariable Long id, @RequestBody City citySpecs){
+	public ResponseEntity<City> updateCity(@Valid @PathVariable Long id, @RequestBody City citySpecs){
 		return cityService.updateEntity(id, citySpecs);
 	}
 

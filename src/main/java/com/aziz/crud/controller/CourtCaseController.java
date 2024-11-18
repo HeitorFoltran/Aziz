@@ -23,7 +23,7 @@ public class CourtCaseController extends GenericController<CourtCase, Long> {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CourtCase> updateCasoJudicial(@Valid @PathVariable Long id, @RequestBody CourtCase courtCaseSpecs) {
+    public ResponseEntity<CourtCase> updateCourtCase(@Valid @PathVariable Long id, @RequestBody CourtCase courtCaseSpecs) {
         return courtCaseService.updateEntity(id, courtCaseSpecs);
     }
 

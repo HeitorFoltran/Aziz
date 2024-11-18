@@ -24,7 +24,7 @@ private final OfficeService officeService;
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Office> updateDefensoria(@Valid @PathVariable Long id, @RequestBody Office officeSpecs){
+	public ResponseEntity<Office> updateOffice(@Valid @PathVariable Long id, @RequestBody Office officeSpecs){
 		return officeService.updateEntity(id, officeSpecs);
 	}
 

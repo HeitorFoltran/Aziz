@@ -23,7 +23,7 @@ public class ClientController extends GenericController<Client, Long> {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Client> updateCliente(@Valid @PathVariable Long id, @RequestBody Client clientSpecs) {
+	public ResponseEntity<Client> updateClient(@Valid @PathVariable Long id, @RequestBody Client clientSpecs) {
 		return clientService.updateEntity(id, clientSpecs);
 	}
 	

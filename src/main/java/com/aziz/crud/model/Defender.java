@@ -21,7 +21,7 @@ public class Defender {
 
     @NotBlank(message = "Esse campo não pode estar vazio.")
     @Column(unique = true, nullable = false)
-    @Pattern(regexp = "^(\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}|\\d{11})$", message = "CPF inválido")
+    @Pattern(regexp = "^(\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}|\\d{11})$", message = "Inserir pelo menos 11 dígitos, com ou sem pontuação.")
     private String cpf;
 
     @Column(nullable = false)

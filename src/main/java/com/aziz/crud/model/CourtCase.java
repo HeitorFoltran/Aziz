@@ -40,7 +40,6 @@ public class CourtCase {
     @Column(name = "categoria", nullable = false)
     private Category category;
 
-    @NotBlank(message = "Insira algo")
     @Column(nullable = false)
     private Boolean status = false;
 
