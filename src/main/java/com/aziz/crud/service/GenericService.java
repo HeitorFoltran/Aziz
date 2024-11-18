@@ -53,7 +53,7 @@ public abstract class GenericService<T, ID> {
             T savedEntity = repository.save(updated);
             return ResponseEntity.ok(savedEntity);
         } catch (Exception e) {
-            throw new EntityUpdateException("Falha ao atulaizar entidade: " + e.getMessage());
+            throw new EntityUpdateException("Falha ao atualizar entidade: " + e.getMessage());
         }
     }
 
