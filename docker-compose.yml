@@ -1,14 +1,18 @@
+version: '3.8'
+
 services:
   db:
     image: mcr.microsoft.com/mssql/server:latest
     container_name: sqlserver_container
     environment:
       - ACCEPT_EULA=Y
-      - MSSQL_SA_PASSWORD=Heitor123!
+      - MSSQL_SA_PASSWORD=${PASSWORD}
     ports:
       - "1433:1433"
     volumes:
       - sqlserver_data:/var/opt/mssql
+    env_file:
+      - .env
 
 volumes:
   sqlserver_data:
